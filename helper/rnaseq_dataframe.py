@@ -89,7 +89,7 @@ def convert_geneID(df, geneIDMap, colName="index",
     if colName == "index":
         df["index"] = df.index
     if fromID == "ensembl_gene_id":
-        df[colName] = df[colName].str.replace("\\.\d*$", "")
+        df[colName] = df[colName].str.replace(r"\.\d*$", "")
 
     df = pd.merge(geneIDMap, df, how="inner", left_on=fromID, right_on=colName)
     df.index = df[toID]
